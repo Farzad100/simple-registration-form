@@ -35,8 +35,10 @@
 <script>
   import { Field, ErrorMessage } from 'vee-validate';
   import * as yup from 'yup';
+  import { useStore } from 'vuex';
   import FormWizard from '@/components/Wizard.vue';
   import FormStep from '@/components/FormSteps.vue';
+  import { computed } from 'vue';
 
   export default {
     name: 'App',
@@ -47,6 +49,7 @@
       ErrorMessage,
     },
     setup() {
+      const store = useStore();
       const validationSchema = [
         yup.object({
           username: yup.string().required().label('Full Name'),
@@ -55,15 +58,12 @@
           email: yup.string().required().email().label('Email Address'),
         }),
       ];
+      const getUserData = computed(() => store.state.userData);
 
       return {
+        getUserData,
         validationSchema,
       };
-    },
-    computed: {
-      getUserData() {
-        return this.$store.state.userData;
-      },
     },
   };
 </script>
