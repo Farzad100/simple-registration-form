@@ -1,6 +1,6 @@
 <template>
   <div>
-    <FormWizard :validation-schema="validationSchema" @submit="onSubmit">
+    <FormWizard :validation-schema="validationSchema">
       <FormStep>
         <h1>Step: username</h1>
         <Field
@@ -72,7 +72,7 @@
   input,
   select {
     margin: 10px 0 10px;
-    width: 300px;
+    width: 400px;
     height: 50px;
     padding: 0 10px;
     font-size: 20px;
