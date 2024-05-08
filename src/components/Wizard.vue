@@ -2,11 +2,26 @@
   <form @submit="onSubmit">
     <slot />
 
-    <div>
-      <button v-if="hasPrevious" id="btn-prev" type="button" @click="goToPrev">
+    <div class="flex">
+      <button
+        :disabled="!hasPrevious"
+        id="btn-prev"
+        :class="{ 'opacity-50': !hasPrevious }"
+        class="px-4 mr-1 mt-3 py-1.5 rounded-md shadow-lg bg-gradient-to-r from-pink-600 to-red-600 font-medium text-gray-100 block transition duration-300"
+        type="button"
+        @click="goToPrev"
+      >
         Previous
       </button>
-      <button v-if="!isLastStep" id="btn-next" type="submit">Next</button>
+      <button
+        :disabled="isLastStep"
+        id="btn-next"
+        :class="{ 'opacity-50': isLastStep }"
+        class="px-4 mt-3 py-1.5 rounded-md shadow-lg bg-gradient-to-r from-pink-600 to-red-600 font-medium text-gray-100 block transition duration-300"
+        type="submit"
+      >
+        Next
+      </button>
     </div>
   </form>
 </template>
